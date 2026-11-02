@@ -40,7 +40,7 @@ It goes in `dependencies` (not `devDependencies`), because Clever Cloud runs `se
 
 - Only code that at least two games really share comes here, and only once it has settled. Game rules, art, sounds and screens stay in the games.
 - **Never a breaking change without a major version.** Games pin a tag; a new tag changes nothing until a game moves to it.
-- **Semver, tagged at every merge** (`vX.Y.Z`, matching `package.json`). Patch for fixes, minor for additions. Below 1.0.0, a minor may break, but say so in the tag's notes.
+- **Semver, tagged at every merge** (`vX.Y.Z`, matching `package.json`). Bump the version in the PR (`npm version patch|minor --no-git-tag-version`): patch for fixes, minor for additions. Below 1.0.0, a minor may break, but say so in the PR. The tag is made by `.github/workflows/tag.yml` after the tests pass on `main`; never push tags by hand.
 - Everything shipped to the browser stays network-free: `tests/principles.test.ts` checks it. A new browser module must be added to its list.
 - Ask the author before adding any dependency. The kit has none at run time.
 - Test everything that can run in Node. DOM-only parts (splash, install, updates) are kept thin.
