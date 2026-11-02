@@ -15,7 +15,8 @@ Shared code for the games of **Travelling Korrigan** (travellingkorrigan.com): M
 |---|---|---|
 | `@travellingkorrigan/kit/platform` | browser | `isNativeApp()`: inside the Capacitor app or not |
 | `@travellingkorrigan/kit/storage` | browser | `createLocalStore(prefix)`: guarded localStorage, never throws |
-| `@travellingkorrigan/kit/i18n` | browser | `createI18n({ en, fr, es })`: `t()`, English fallback, character variants (`<key>@<variant>`), `detectLang()` |
+| `@travellingkorrigan/kit/i18n` | browser | `createI18n({ en, fr, es })`: `t()`, English fallback, character variants (`<key>@<variant>`), `detectLang()`; `applyStrings(t)` puts the texts into the page (`data-i18n`, `data-i18n-label`) |
+| `@travellingkorrigan/kit/characters` | browser | `renderCharacterChoice({ characters, current, onChoose })`: the korrigan choice, round portraits acting as one choice, in every `.character-choice` group |
 | `@travellingkorrigan/kit/splash` | browser | `dismissSplashSoon()` |
 | `@travellingkorrigan/kit/install` | browser | `InstallOffer`: the quiet "install the game" offer |
 | `@travellingkorrigan/kit/updates` | browser | `setupUpdates({ registerSW })`: quiet service-worker updates |
