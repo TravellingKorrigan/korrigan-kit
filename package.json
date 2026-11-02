@@ -1,6 +1,6 @@
 {
   "name": "@travellingkorrigan/kit",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Shared code for the games of Travelling Korrigan. Free to play. Offline. No ads.",
   "license": "MIT",
   "author": "Horacio Gonzalez",
@@ -24,7 +24,8 @@
     "./vite": "./dist/vite.js",
     "./server": "./node/server.mjs",
     "./checks": "./dist/checks.js",
-    "./version": "./node/version.mjs"
+    "./version": "./node/version.mjs",
+    "./characters": "./dist/characters.js"
   },
   "bin": {
     "korrigan-sync-version": "bin/sync-version.mjs"

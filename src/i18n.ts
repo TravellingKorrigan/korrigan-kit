@@ -50,3 +50,17 @@ export function createI18n(strings: Record<Lang, Strings>): I18n {
     strings,
   };
 }
+
+/**
+ * Puts the translated texts into the page: `data-i18n="key"` sets an element's text,
+ * `data-i18n-label="key"` its accessible name and tooltip (for icon buttons). Call it again after
+ * a language change.
+ */
+export function applyStrings(t: I18n['t'], root: ParentNode = document): void {
+  root.querySelectorAll<HTMLElement>('[data-i18n]').forEach((el) => (el.textContent = t(el.dataset.i18n!)));
+  root.querySelectorAll<HTMLElement>('[data-i18n-label]').forEach((el) => {
+    const label = t(el.dataset.i18nLabel!);
+    el.setAttribute('aria-label', label);
+    el.title = label;
+  });
+}

@@ -6,7 +6,7 @@ import { readdirSync, readFileSync } from 'node:fs';
 import { describe, expect, it } from 'vitest';
 import { findNetworkUse } from '../src/checks';
 
-const SHIPPED = ['platform.ts', 'storage.ts', 'i18n.ts', 'splash.ts', 'install.ts', 'updates.ts'];
+const SHIPPED = ['platform.ts', 'storage.ts', 'i18n.ts', 'splash.ts', 'install.ts', 'updates.ts', 'characters.ts'];
 const src = new URL('../src/', import.meta.url);
 
 describe('no network in shipped code', () => {
