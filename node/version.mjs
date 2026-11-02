@@ -9,7 +9,7 @@ const PBXPROJ = 'ios/App/App.xcodeproj/project.pbxproj';
 
 export function buildNumber(version) {
   const match = /^(\d+)\.(\d+)\.(\d+)$/.exec(version);
-  if (!match) throw new Error(`not a semver version: ${version}`);
+  if (!match) throw new Error(`package.json version must be semver (x.y.z), found: ${version}`);
   const [, major, minor, patch] = match.map(Number);
   if (minor > 99 || patch > 99) throw new Error(`minor and patch must stay below 100: ${version}`);
   return major * 10000 + minor * 100 + patch;
