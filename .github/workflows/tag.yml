@@ -1,0 +1,37 @@
+# Every merge to main gets the tag of its package.json version (vX.Y.Z), so games can pin it.
+# Tests run first: a version that fails them is never tagged. If the tag already exists (a merge
+# that didn't bump the version), nothing happens.
+name: Tag version
+
+on:
+  push:
+    branches: [main]
+
+permissions:
+  contents: write
+
+jobs:
+  tag:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 24
+      - run: npm ci
+      - run: npm run typecheck
+      - run: npm test
+      - name: Tag the version
+        run: |
+          tag="v$(node -p "require('./package.json').version")"
+          if git rev-parse -q --verify "refs/tags/$tag" >/dev/null; then
+            echo "$tag already exists, nothing to tag."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898283+github-actions[bot]@users.noreply.github.com"
+          git tag -a "$tag" -m "Korrigan Kit $tag"
+          git push origin "$tag"
+          echo "Tagged $tag."
