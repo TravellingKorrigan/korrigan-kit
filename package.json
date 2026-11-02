@@ -1,0 +1,51 @@
+{
+  "name": "@travellingkorrigan/kit",
+  "version": "0.1.0",
+  "description": "Shared code for the games of Travelling Korrigan. Free to play. Offline. No ads.",
+  "license": "MIT",
+  "author": "Horacio Gonzalez",
+  "repository": "github:TravellingKorrigan/korrigan-kit",
+  "type": "module",
+  "engines": {
+    "node": ">=22"
+  },
+  "files": [
+    "dist",
+    "node",
+    "bin"
+  ],
+  "exports": {
+    "./platform": "./dist/platform.js",
+    "./storage": "./dist/storage.js",
+    "./i18n": "./dist/i18n.js",
+    "./splash": "./dist/splash.js",
+    "./install": "./dist/install.js",
+    "./updates": "./dist/updates.js",
+    "./vite": "./dist/vite.js",
+    "./server": "./node/server.mjs",
+    "./checks": "./dist/checks.js",
+    "./version": "./node/version.mjs"
+  },
+  "bin": {
+    "korrigan-sync-version": "bin/sync-version.mjs"
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.build.json",
+    "prepare": "npm run build",
+    "test": "vitest run",
+    "typecheck": "tsc --noEmit"
+  },
+  "peerDependencies": {
+    "vite": "^8.3.5"
+  },
+  "peerDependenciesMeta": {
+    "vite": {
+      "optional": true
+    }
+  },
+  "devDependencies": {
+    "typescript": "~5.9.3",
+    "vite": "^8.3.5",
+    "vitest": "^5.0.5"
+  }
+}
